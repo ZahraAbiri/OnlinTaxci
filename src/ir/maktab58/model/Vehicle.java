@@ -1,8 +1,8 @@
 package ir.maktab58.model;
 
-public class Cars {
-    private int carId;
-    private int driverId;
+public class Vehicle {
+    private int vehicleId;
+    private Driver driver;
     private String name;
     private String model;
     private String color;
@@ -11,12 +11,21 @@ public class Cars {
     private KindofVehicle kindofVehicle;
 
 
-    public Cars() {
+    public Vehicle() {
     }
 
-    public Cars(int carId, int driverId, String name, String model, String color, String capacity, String plateNumber, KindofVehicle kindofVehicle) {
-        this.carId = carId;
-        this.driverId = driverId;
+    public Vehicle(int vehicleId, Driver driver, String name, String model, String color, String capacity, String plateNumber, KindofVehicle kindofVehicle) {
+        this.vehicleId = vehicleId;
+        this.driver = driver;
+        this.name = name;
+        this.model = model;
+        this.color = color;
+        this.capacity = capacity;
+        this.plateNumber = plateNumber;
+        this.kindofVehicle = kindofVehicle;
+    }
+
+    public Vehicle(String name, String model, String color, String capacity, String plateNumber, KindofVehicle kindofVehicle) {
         this.name = name;
         this.model = model;
         this.color = color;
@@ -26,20 +35,20 @@ public class Cars {
     }
 
 
-    public int getCarId() {
-        return carId;
+    public int getVehicleId() {
+        return vehicleId;
     }
 
-    public void setCarId(int carId) {
-        this.carId = carId;
+    public void setVehicleId(int vehicleId) {
+        this.vehicleId = vehicleId;
     }
 
-    public int getDriverId() {
-        return driverId;
+    public Driver getDriver() {
+        return driver;
     }
 
-    public void setDriverId(int driverId) {
-        this.driverId = driverId;
+    public void setDriver(Driver driver) {
+        this.driver = driver;
     }
 
     public String getName() {
@@ -94,8 +103,8 @@ public class Cars {
     @Override
     public String toString() {
         return "Cars{" +
-                "carId=" + carId +
-                ", DriverId=" + driverId +
+                "carId=" + vehicleId +
+                ", DriverId=" + driver +
                 ", name='" + name + '\'' +
                 ", model='" + model + '\'' +
                 ", color='" + color + '\'' +
@@ -103,5 +112,13 @@ public class Cars {
                 ", plateNumber='" + plateNumber + '\'' +
                 '}';
     }
-
+//CREATE TABLE `taxi`.`vehicle` (
+//  `vehicleId` INT NOT NULL AUTO_INCREMENT,
+//  `name` VARCHAR(45) NOT NULL,
+//  `model` VARCHAR(4) NOT NULL,
+//  `color` VARCHAR(45) NOT NULL,
+//  `capacity` VARCHAR(1) NOT NULL,
+//  `plateNumber` VARCHAR(45) NOT NULL,
+//  `kindofVehicle` ENUM('CAR', 'VAN', 'MOTOR') NOT NULL,
+//  PRIMARY KEY (`vehicleId`));
 }

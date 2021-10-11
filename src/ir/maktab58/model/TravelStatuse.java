@@ -1,9 +1,12 @@
 package ir.maktab58.model;
 
 public enum TravelStatuse {
+    ONGOING("ongoing"),
+    WAITING("waiting"),
     START("START"),
     CANCEL("CANCEL"),
     FINISHED("FINISHED");
+
     private String shortcut;
 
     TravelStatuse(String shortcut) {
@@ -14,8 +17,8 @@ public enum TravelStatuse {
         return shortcut;
     }
 
-    public String setShortcut(String shortcut) {
+    public TravelStatuse setShortcut(String shortcut) {
         this.shortcut = shortcut;
-        return shortcut;
+        return TravelStatuse.WAITING;
     }
 }

@@ -8,13 +8,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DriverDatabaseAccess extends Database {
+
+
     public DriverDatabaseAccess() throws SQLException {
     }
 
     public void save(Driver driver) throws SQLException {
         if (getConnection() != null) {
-            String sql = String.format("INSERT INTO driver (name,family,nationalcode,phoneNumber) VALUES ('%S','%S','%S','%S')",
-                    driver.getName(), driver.getFamily(), driver.getNationalcode(), driver.getPhoneNumber());
+            String sql = String.format("INSERT INTO driver (name,family,age,nationalcode,username,phoneNumber) VALUES ('%S','%S','%S','%S','%S','%S')",
+                    driver.getName(), driver.getFamily(), driver.getAge(), driver.getNationalcode(), driver.getUsername(), driver.getPhoneNumber());
             PreparedStatement statement = getConnection().prepareStatement(sql);
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
@@ -29,7 +31,10 @@ public class DriverDatabaseAccess extends Database {
         Statement statement = getConnection().createStatement();
         ResultSet resultSet = statement.executeQuery("select * from driver");
         while (resultSet.next()) {
-            System.out.println(resultSet.getString(1));
+            System.out.print(resultSet.getString(1));
+            System.out.print(resultSet.getString(2));
+            System.out.print(resultSet.getString(3));
+            System.out.print(resultSet.getString(4));
         }
     }
 
@@ -42,5 +47,19 @@ public class DriverDatabaseAccess extends Database {
             }
         }
         return false;
+    }
+
+    public Driver findByNationalCodeOrUserName(String nationalcode) throws SQLException {
+
+        Statement statement = getConnection().createStatement();
+        ResultSet resultSet = statement.executeQuery("select dev.nationalcode from driver dev");
+        while (resultSet.next()) {
+            if (resultSet.getString(1).equals(nationalcode)) {
+                Driver driver = new Driver();
+                driver.setNationalcode(nationalcode);
+                return driver;
+            }
+        }
+        return null;
     }
 }
