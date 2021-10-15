@@ -112,13 +112,5 @@ public class Vehicle {
                 ", plateNumber='" + plateNumber + '\'' +
                 '}';
     }
-//CREATE TABLE `taxi`.`vehicle` (
-//  `vehicleId` INT NOT NULL AUTO_INCREMENT,
-//  `name` VARCHAR(45) NOT NULL,
-//  `model` VARCHAR(4) NOT NULL,
-//  `color` VARCHAR(45) NOT NULL,
-//  `capacity` VARCHAR(1) NOT NULL,
-//  `plateNumber` VARCHAR(45) NOT NULL,
-//  `kindofVehicle` ENUM('CAR', 'VAN', 'MOTOR') NOT NULL,
-//  PRIMARY KEY (`vehicleId`));
+
 }

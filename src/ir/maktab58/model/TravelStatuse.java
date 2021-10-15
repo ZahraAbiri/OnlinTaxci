@@ -16,9 +16,7 @@ public enum TravelStatuse {
     public String getShortcut() {
         return shortcut;
     }
-
-    public TravelStatuse setShortcut(String shortcut) {
+    public void setShortcut(String shortcut) {
         this.shortcut = shortcut;
-        return TravelStatuse.WAITING;
     }
 }

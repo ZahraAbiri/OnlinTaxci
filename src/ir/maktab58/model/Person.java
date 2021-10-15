@@ -8,8 +8,26 @@ public class Person {
     private String username;
     private String phoneNumber;
     private Account account;
+    private Location location;
 
-    public Person(String name, String family,int age, String nationalcode, String username, String phoneNumber) {
+    public Location getLocation() {
+        return location;
+    }
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public Person(String name, String family, int age, String nationalcode, String username, String phoneNumber, Location location) {
+        this.name = name;
+        this.family = family;
+        this.age = age;
+        this.nationalcode = nationalcode;
+        this.username = username;
+        this.phoneNumber = phoneNumber;
+        this.location = location;
+    }
+
+    public Person(String name, String family, int age, String nationalcode, String username, String phoneNumber) {
         this.name = name;
         this.family = family;
         this.age=age;
@@ -76,5 +94,19 @@ public class Person {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", family='" + family + '\'' +
+                ", age=" + age +
+                ", nationalcode='" + nationalcode + '\'' +
+                ", username='" + username + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", account=" + account +
+                ", location=" + location +
+                '}';
     }
 }

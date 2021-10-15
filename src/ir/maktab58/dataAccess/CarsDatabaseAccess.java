@@ -16,7 +16,8 @@ public class CarsDatabaseAccess extends Database {
         if (getConnection() != null) {
             String sql = String.format("INSERT INTO vehicle (name,model,color,capacity,plateNumber,kindofVehicle) VALUES ('%S','%S','%S','%S','%S','%S')",
                     car.getName(), car.getModel(), car.getColor(), car.getCapacity(), car.getPlateNumber(),car.getKindofVehicle());
-            PreparedStatement statement = getConnection().prepareStatement(sql);
+            PreparedStatement statement = getConnection().prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            ResultSet resultSet=statement.getGeneratedKeys();
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
                 System.out.println("A new user was inserted successfully!");
